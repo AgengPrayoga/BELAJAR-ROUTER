@@ -1,10 +1,10 @@
 <template>
-    <center><b><h1>Detail Produk</h1></b></center>
+    <h1 style="text-align: center;">Kategori</h1>
     <div class="flex-container">
-        <div v-for="produk in state" :key="produk.id" class="card">
-            <img :src="getImgSrc(produk.img)" width="200" height="120" alt="Category Image" style="margin-left: 3%;"/>
-            <router-link class="container" :to="{ name: 'Detail', params: { id_produk: produk.id }}">
-                <h4>{{ produk.nama }}</h4>
+        <div v-for="kategori in state" :key="kategori.id" class="card">
+            <img :src="getImgSrc(kategori.img)" width="200" height="120" alt="Category Image" style="margin-left: 2 %;"/>
+            <router-link class="container" :to="{name: 'DetailKategori', params: { id_kategori: kategori.id }}">
+                <h4>{{ kategori.nama }}</h4>
             </router-link>
         </div>
     </div>
@@ -12,19 +12,19 @@
 
 <script>
     import { onMounted, reactive } from 'vue'
-    import { produk } from '@/assets/Produk';
+    import { kategori } from '@/assets/Kategori';
 
     export default {
         setup(props, context)
         {
-            const state = reactive(produk["produk"]);
+            const state = reactive(kategori ["kategori"]);
 
             const getImgSrc = (imgFileName) => {
                 return '../src/assets/img/' + imgFileName + '';
             }
 
             onMounted(() => {
-                context.emit("id-menu", 4);
+                context.emit("id-menu", 5);
             });
 
             return {
@@ -39,7 +39,7 @@
     display: flex;
     flex-wrap: wrap;
     text-align: center;
-    margin-left: 7%;
+    margin-left: 6.5%;
 }
 .card{
     /* Add shadows to create the "card" effect */
@@ -56,6 +56,6 @@
 }
 /* Add some padding inside the card container */
 .container {
-    padding: 2px 16px;
+    padding: px 16px;
 }
 </style>
